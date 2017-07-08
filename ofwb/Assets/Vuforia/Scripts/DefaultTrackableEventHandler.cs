@@ -70,7 +70,13 @@ namespace Vuforia
         {
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+            Canvas[] canvasObjects = GetComponentsInChildren<Canvas>();
 
+            // Enable Canvas:
+            foreach (Canvas canvas in canvasObjects)
+            {
+                canvas.enabled = true;
+            }
             // Enable rendering:
             foreach (Renderer component in rendererComponents)
             {
@@ -80,7 +86,7 @@ namespace Vuforia
             // Enable colliders:
             foreach (Collider component in colliderComponents)
             {
-                component.enabled = true;
+               component.enabled = true;
             }
 
             Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
@@ -91,11 +97,18 @@ namespace Vuforia
         {
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
             Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+            Canvas[] canvasObjects = GetComponentsInChildren<Canvas>();
+
+            // Disable Canvas:
+            foreach (Canvas canvas in canvasObjects)
+            {
+                canvas.enabled = false;
+            }
 
             // Disable rendering:
             foreach (Renderer component in rendererComponents)
             {
-                component.enabled = false;
+               component.enabled = false;
             }
 
             // Disable colliders:
