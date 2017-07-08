@@ -104,6 +104,7 @@
 -define:UNITY_EDITOR_OSX
 -define:ENABLE_NATIVE_ARRAY_CHECKS
 -define:UNITY_TEAM_LICENSE
+'Assets/Editor/Vuforia/SampleOrientationSetter.cs'
 'Assets/Vuforia/Editor/Scripts/ComponentFactoryStarter/ComponentFactoryStarter.cs'
 'Assets/Vuforia/Editor/Scripts/ExtensionImport.cs'
 'Assets/Vuforia/Editor/Scripts/PostProcessBuildPlayer.cs'

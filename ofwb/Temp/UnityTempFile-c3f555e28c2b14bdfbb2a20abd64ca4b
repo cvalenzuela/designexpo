@@ -102,9 +102,9 @@
 -r:'/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll'
 -r:'/Applications/Unity/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll'
 -r:'/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll'
--r:'Assets/Vuforia/Editor/Scripts/Vuforia.UnityExtensions.Editor.dll'
--r:'Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll'
 -r:'/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll'
 -r:'/Applications/Unity/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Common.dll'
+-r:'Assets/Vuforia/Editor/Scripts/Vuforia.UnityExtensions.Editor.dll'
+-r:'Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll'
 -i:UnityEditor
 'Assets/Plugins/Editor/Unzip.js'
