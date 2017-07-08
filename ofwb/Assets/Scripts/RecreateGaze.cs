@@ -19,7 +19,7 @@ public class RecreateGaze : MonoBehaviour {
 	void Update () {
 		// If the mouse is pressed
 		if (Input.GetMouseButtonDown (0)) {
-			print("mouse clicked");
+			
 			// Create a ray from the current camera to the mouse position
 			Ray ray = camera.ScreenPointToRay (Input.mousePosition);
 			// Create an empty RaycastHit element
@@ -27,6 +27,7 @@ public class RecreateGaze : MonoBehaviour {
 			// Check if the ray hits an element. If it does, store the hitted element in the hit variable.
 			if (Physics.Raycast (ray, out hit)) {
 				// Save that object as the FocusedObject
+				print("here");
 				FocusedObject = hit.collider.gameObject;
 				//Debug.Log (FocusedObject);
 				// Send a message to that gameObject
