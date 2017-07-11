@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class MoreInfo : MonoBehaviour
 {
-
     // Called by GazeGestureManager when the user performs a Select gesture
     void OnSelect()
     {
@@ -13,16 +12,7 @@ public class MoreInfo : MonoBehaviour
         foreach(Image image in images)
         {
             image.enabled = true;
+            image.gameObject.SendMessage("MoveNote");
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    void showChildren()
-    {
-
     }
 }

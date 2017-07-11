@@ -1,15 +1,46 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-public class TapToPlace : MonoBehaviour
+public class TapToPlaceCanvas : MonoBehaviour
 {
     bool placing = false;
+    public bool selected = false;
+
+    void Start()
+    {
+        GetComponent<Canvas>().enabled = false;
+    }
+
+    // Called by DefaultTrackableEvent
+    void Tracked()
+    {
+        GetComponent<Canvas>().enabled = true;
+    }
+
+    void NotTracked()
+    {
+        if (!selected)
+        {
+            GetComponent<Canvas>().enabled = false;
+        }
+    }
 
     // Called by GazeGestureManager when the user performs a Select gesture
     void OnSelect()
     {
         // On each Select gesture, toggle whether the user is in placing mode.
         placing = !placing;
+        // If the user is in placing mode, display the spatial mapping mesh.
+        if (placing)
+        {
+            // If the object is selected change its property of selection
+            selected = true;
+            //SpatialMapping.Instance.DrawVisualMeshes = true;
+        }
+        // If the user is not in placing mode, hide the spatial mapping mesh.
+        else
+        {
+            //SpatialMapping.Instance.DrawVisualMeshes = false;
+        }
     }
 
     // Update is called once per frame
@@ -19,7 +50,7 @@ public class TapToPlace : MonoBehaviour
         // update the placement to match the user's gaze.
 
         if (placing)
-        {   
+        {
             // Do a raycast into the world that will only hit the Spatial Mapping mesh.
             var headPosition = Camera.main.transform.position;
             var gazeDirection = Camera.main.transform.forward;
@@ -39,10 +70,5 @@ public class TapToPlace : MonoBehaviour
                 this.transform.rotation = toQuat;
             }
         }
-    }
-
-    void Close()
-    {
-        GetComponent<Image>().enabled = false;
     }
 }

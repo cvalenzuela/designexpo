@@ -17,10 +17,8 @@ namespace Vuforia
         #region PRIVATE_MEMBER_VARIABLES
  
         private TrackableBehaviour mTrackableBehaviour;
-    
+
         #endregion // PRIVATE_MEMBER_VARIABLES
-
-
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
     
@@ -35,14 +33,15 @@ namespace Vuforia
 
         #endregion // UNTIY_MONOBEHAVIOUR_METHODS
 
-
-
         #region PUBLIC_METHODS
 
         /// <summary>
         /// Implementation of the ITrackableEventHandler function called when the
         /// tracking state changes.
         /// </summary>
+
+        public Canvas canvas;
+
         public void OnTrackableStateChanged(
                                         TrackableBehaviour.Status previousStatus,
                                         TrackableBehaviour.Status newStatus)
@@ -68,56 +67,56 @@ namespace Vuforia
 
         private void OnTrackingFound()
         {
-            Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
-            Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
-            Canvas[] canvasObjects = GetComponentsInChildren<Canvas>();
+            canvas.SendMessage("Tracked");
+            //Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
+            //Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+            //Canvas[] canvasObjects = GetComponentsInChildren<Canvas>();
 
             // Enable Canvas:
-            foreach (Canvas canvas in canvasObjects)
-            {
-                canvas.enabled = true;
-            }
+           // foreach (Canvas canvas in canvasObjects)
+            //{
+                //canvas.enabled = true;
+           //     canvas.SendMessage("Tracked");
+           // }
+
             // Enable rendering:
-            foreach (Renderer component in rendererComponents)
-            {
-                component.enabled = true;
-            }
+            // foreach (Renderer component in rendererComponents)
+            // {
+            //   component.enabled = true;
+            // }
 
             // Enable colliders:
-            foreach (Collider component in colliderComponents)
-            {
-               component.enabled = true;
-            }
-
-            Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
+            //  foreach (Collider component in colliderComponents)
+            //{
+            //    component.enabled = true;
+            // }
         }
 
 
         private void OnTrackingLost()
         {
-            Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
-            Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
-            Canvas[] canvasObjects = GetComponentsInChildren<Canvas>();
+            canvas.SendMessage("NotTracked");
+            //  Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
+            // Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
+            //  Canvas[] canvasObjects = GetComponentsInChildren<Canvas>();
 
             // Disable Canvas:
-            foreach (Canvas canvas in canvasObjects)
-            {
-                canvas.enabled = false;
-            }
+            //  foreach (Canvas canvas in canvasObjects)
+            //  {
+            // canvas.enabled = false;
+            //      canvas.SendMessage("NotTracked");
+            //  }
 
             // Disable rendering:
-            foreach (Renderer component in rendererComponents)
-            {
-               component.enabled = false;
-            }
+            // foreach (Renderer component in rendererComponents)
+            //  {
+            //  component.enabled = false;
+            //}
 
             // Disable colliders:
-            foreach (Collider component in colliderComponents)
-            {
-                component.enabled = false;
-            }
-
-            Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+            //foreach (Collider component in colliderComponents)
+            // {
+            //    component.enabled = false;
         }
 
         #endregion // PRIVATE_METHODS

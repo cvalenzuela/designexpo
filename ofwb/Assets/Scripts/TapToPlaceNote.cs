@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class TapToPlace : MonoBehaviour
+public class TapToPlaceNote : MonoBehaviour
 {
     bool placing = false;
+
+    void Start()
+    {
+        GetComponent<Image>().enabled = false;
+    }
 
     // Called by GazeGestureManager when the user performs a Select gesture
     void OnSelect()
@@ -19,7 +24,7 @@ public class TapToPlace : MonoBehaviour
         // update the placement to match the user's gaze.
 
         if (placing)
-        {   
+        {
             // Do a raycast into the world that will only hit the Spatial Mapping mesh.
             var headPosition = Camera.main.transform.position;
             var gazeDirection = Camera.main.transform.forward;

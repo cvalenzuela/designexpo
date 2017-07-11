@@ -100,13 +100,17 @@
     <Compile Include="Assets\Holograms\Support\Spatial Mapping\SpatialMapping.cs" />
     <Compile Include="Assets\Holograms\Support\Underworld\UnderworldReset.cs" />
     <Compile Include="Assets\Holograms\Support\Underworld\UnderworldSound.cs" />
+    <Compile Include="Assets\Scripts\Close.cs" />
     <Compile Include="Assets\Scripts\Cursor.cs" />
     <Compile Include="Assets\Scripts\GazeGestureManager.cs" />
     <Compile Include="Assets\Scripts\MoreInfo.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\NotesCommands.cs" />
     <Compile Include="Assets\Scripts\RecreateGaze.cs" />
+    <Compile Include="Assets\Scripts\SpeechManager.cs" />
     <Compile Include="Assets\Scripts\TapToPlace.cs" />
+    <Compile Include="Assets\Scripts\TapToPlaceCanvas.cs" />
+    <Compile Include="Assets\Scripts\TapToPlaceNote.cs" />
     <Compile Include="Assets\Scripts\VoiceCommands.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />

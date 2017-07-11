@@ -31,26 +31,21 @@ public class Move : MonoBehaviour {
 	// Boolean to reset the object
 	private bool reset = false;
 
-	// Function to be called when the object is selected (gazed at)
-	void OnSelect() {
-		start = true;
-	}
-
-	// Function to be called when the object is reseted (gazed at)
-	void OnReset() {
-		reset = true;
-	}
+    void MoveNote()
+    {
+        start = true;
+    }
 
 	void Update () {
 		// If start is true and the position and rotation is not the desired one, move and rotate using lerp.
-		if(start && transform.position != targetPosition){
+		if(start){
 
 			// Move
-			transform.localPosition = Vector3.Lerp (transform.localPosition, targetPosition, speed * Time.deltaTime);
+			transform.localPosition = Vector3.Lerp (originPosition, targetPosition, speed * Time.deltaTime);
 			// Scale
-			transform.localScale = Vector3.Lerp (transform.localScale, targetScale, speed * Time.deltaTime);
+			transform.localScale = Vector3.Lerp (originScale, targetScale, speed * Time.deltaTime);
 			// Rotate
-			transform.localRotation = Quaternion.Lerp (transform.localRotation, targetRotation, speed * Time.deltaTime);
+			transform.localRotation = Quaternion.Lerp (originRotation, targetRotation, speed * Time.deltaTime);
 
 		}
 		// If reset is true and the position and rotation is not the origin one, move and rotate using lerp.
