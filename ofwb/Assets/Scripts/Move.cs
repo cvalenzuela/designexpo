@@ -27,36 +27,36 @@ public class Move : MonoBehaviour {
 	public Vector3 targetScale = new Vector3 (0, 0, 0);
 
 	// Boolean to start the movement
-	private bool start = false;
+	private bool defaultPostition = false;
 	// Boolean to reset the object
 	private bool reset = false;
 
-    void MoveNote()
+    void goToDefaultPosition()
     {
-        start = true;
+        defaultPostition = true;
     }
 
-	void Update () {
+    void stopMovingToDefaultPosition()
+    {
+        defaultPostition = false;
+    }
+
+    void Start()
+    {
+        transform.localPosition = new Vector3(0, 0, 0);
+        transform.localScale = new Vector3(0, 0, 0);
+    }
+
+    void Update () {
 		// If start is true and the position and rotation is not the desired one, move and rotate using lerp.
-		if(start){
-
+		if(defaultPostition)
+        {
 			// Move
-			transform.localPosition = Vector3.Lerp (originPosition, targetPosition, speed * Time.deltaTime);
+			transform.localPosition = Vector3.Lerp (transform.localPosition, targetPosition, speed * Time.deltaTime);
 			// Scale
-			transform.localScale = Vector3.Lerp (originScale, targetScale, speed * Time.deltaTime);
+			transform.localScale = Vector3.Lerp (transform.localScale, targetScale, speed * Time.deltaTime);
 			// Rotate
-			transform.localRotation = Quaternion.Lerp (originRotation, targetRotation, speed * Time.deltaTime);
-
-		}
-		// If reset is true and the position and rotation is not the origin one, move and rotate using lerp.
-		if(reset && transform.position != originPosition){
-			// Move
-			transform.position = Vector3.Lerp (transform.position, originPosition, speed * Time.deltaTime);
-			// Rotate
-			transform.rotation = Quaternion.Lerp (transform.rotation, originRotation, speed * Time.deltaTime );
-			// Scale
-			transform.localScale = Vector3.Lerp (transform.localScale, originScale, speed * Time.deltaTime);
-
+			transform.localRotation = Quaternion.Lerp (transform.localRotation, targetRotation, speed * Time.deltaTime);
 		}
 	}
 }

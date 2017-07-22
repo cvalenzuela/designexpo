@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Close : MonoBehaviour
 {
+    public Image note;
 
     void Start()
     {
@@ -14,6 +15,6 @@ public class Close : MonoBehaviour
     void OnSelect()
     {
         GetComponent<Image>().enabled = false;
-        SendMessageUpwards("Close");
+        note.SendMessage("Close");
     }
 }

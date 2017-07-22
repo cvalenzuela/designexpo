@@ -12,7 +12,7 @@ public class MoreInfo : MonoBehaviour
         foreach(Image image in images)
         {
             image.enabled = true;
-            image.gameObject.SendMessage("MoveNote");
+            image.SendMessage("goToDefaultPosition");
         }
     }
 }

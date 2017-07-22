@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\MoreInfo.cs" />
     <Compile Include="Assets\Scripts\Move.cs" />
     <Compile Include="Assets\Scripts\NotesCommands.cs" />
+    <Compile Include="Assets\Scripts\NotesObject.cs" />
     <Compile Include="Assets\Scripts\RecreateGaze.cs" />
     <Compile Include="Assets\Scripts\SpeechManager.cs" />
     <Compile Include="Assets\Scripts\TapToPlace.cs" />

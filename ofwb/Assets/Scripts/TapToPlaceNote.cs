@@ -49,5 +49,11 @@ public class TapToPlaceNote : MonoBehaviour
     void Close()
     {
         GetComponent<Image>().enabled = false;
+        Image[] images = GetComponentsInChildren<Image>();
+
+        foreach (Image image in images)
+        {
+            image.enabled = false;
+        }
     }
 }

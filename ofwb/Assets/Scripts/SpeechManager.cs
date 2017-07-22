@@ -11,19 +11,65 @@ public class SpeechManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        keywords.Add("Reset world", () =>
+        keywords.Add("Clear All", () =>
         {
             // Call the OnReset method on every descendant object.
-            this.BroadcastMessage("OnReset");
+            //this.BroadcastMessage("OnSelect");
         });
 
-        keywords.Add("Hello", () =>
+        // Discover a book
+        keywords.Add("Discover this Book", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the Discover method on the focused object.
+                focusObject.SendMessage("Discover", SendMessageOptions.DontRequireReceiver);
+            }
+        });   
+
+        // Goals of a book
+        keywords.Add("My Goals", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the Goal method on the focused object.
+                focusObject.SendMessage("Goals", SendMessageOptions.DontRequireReceiver);
+            }   
+        });
+
+
+        // Notes of a book
+        keywords.Add("Show my Notes", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the Notes method on the focused object.
+                focusObject.SendMessage("Notes", SendMessageOptions.DontRequireReceiver);
+            }
+        });
+
+        // Close a note from a book
+        keywords.Add("Close This", () =>
         {
             var focusObject = GazeGestureManager.Instance.FocusedObject;
             if (focusObject != null)
             {
                 // Call the OnDrop method on just the focused object.
-                focusObject.SendMessage("onSelect", SendMessageOptions.DontRequireReceiver);
+                focusObject.SendMessage("Close", SendMessageOptions.DontRequireReceiver);
+            }
+        });
+
+        // Stop a sound audio from a note
+        keywords.Add("Stop This", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the OnDrop method on just the focused object.
+                focusObject.SendMessage("Stop", SendMessageOptions.DontRequireReceiver);
             }
         });
 

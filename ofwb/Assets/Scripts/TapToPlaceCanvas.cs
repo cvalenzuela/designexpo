@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TapToPlaceCanvas : MonoBehaviour
 {
     bool placing = false;
     public bool selected = false;
+    public Image discover;
+    public Image goal;
+    public Image notes;
 
     void Start()
     {
@@ -40,6 +44,97 @@ public class TapToPlaceCanvas : MonoBehaviour
         else
         {
             //SpatialMapping.Instance.DrawVisualMeshes = false;
+        }
+    }
+
+    // Discover: Called by the Speech Manager
+    void Discover()
+    {
+        if (selected)
+        {
+            discover.enabled = true;
+            discover.SendMessage("goToDefaultPosition");
+
+            //Play the audio for that discover
+            AudioSource discoverAudio = discover.GetComponent<AudioSource>();
+            discoverAudio.Play();
+
+            Image[] images = discover.GetComponentsInChildren<Image>();
+
+            foreach (Image image  in images)
+            {
+                image.enabled = true;
+            }
+        }
+    }
+
+    // Goal: Called by the Speech Manager
+    void Goals()
+    {
+        if (selected)
+        {
+            goal.enabled = true;
+            goal.SendMessage("goToDefaultPosition");
+
+            Image[] images = goal.GetComponentsInChildren<Image>();
+
+            foreach (Image image in images)
+            {
+                image.enabled = true;
+            }
+        }
+    }
+
+    // Notes: Called by the Speech Manager
+    void Notes()
+    {
+        if (selected)
+        {
+            notes.enabled = true;
+            notes.SendMessage("goToDefaultPosition");
+
+            Image[] images = notes.GetComponentsInChildren<Image>();
+
+            foreach (Image image in images)
+            {
+                image.enabled = true;
+            }
+        }
+    }
+
+    // Close the book, called by the Speech Manager
+    void Close()
+    {
+        if (selected)
+        {   
+            // Disable all children notes
+            notes.enabled = false;
+            Image[] noteImages = notes.GetComponentsInChildren<Image>();
+
+            foreach (Image image in noteImages)
+            {
+                image.enabled = false;
+            }
+
+            goal.enabled = false;
+            Image[] goalImages = goal.GetComponentsInChildren<Image>();
+
+            foreach (Image image in goalImages)
+            {
+                image.enabled = false;
+            }
+
+            discover.enabled = false;
+            Image[] discoverImages = discover.GetComponentsInChildren<Image>();
+
+            foreach (Image image in discoverImages)
+            {
+                image.enabled = false;
+            }
+
+            // Disable this canvas
+            GetComponent<Canvas>().enabled = false;
+            selected = false;
         }
     }
 

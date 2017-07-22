@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="CollectiveIntelligence" size="0.180000 0.236160" />
+    <ImageTarget name="TheGlassCage" size="0.160000 0.243594" />
+    <ImageTarget name="DeepLearning" size="0.180000 0.239880" />
+    <ImageTarget name="HereComesEverybody" size="0.130000 0.195960" />
     <ImageTarget name="HackersandPainters" size="0.210000 0.329404" />
   </Tracking>
 </QCARConfig>
